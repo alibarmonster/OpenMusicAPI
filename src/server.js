@@ -14,11 +14,17 @@ const songs = require('./api/songs/index-song');
 const SongsService = require('./services/song-Service');
 const SongsValidator = require('./validator/songs/index-song');
 
+// users
+const users = require('./api/users/index-user');
+const UsersService = require('./services/users-Service');
+const UsersValidator = require('./validator/users/index-users');
+
 const ClientError = require('./exceptions/ClientError');
 
 const init = async () => {
   const albumsService = new AlbumsService();
   const songsService = new SongsService();
+  const usersService = new UsersService();
   const server = Hapi.server({
     port: process.env.PORT !== undefined ? process.env.PORT : 5000,
     host: process.env.HOST !== 'production' ? 'localhost' : '0.0.0.0',
@@ -42,6 +48,13 @@ const init = async () => {
       options: {
         service: albumsService,
         validator: AlbumsValidator,
+      },
+    },
+    {
+      plugin: users,
+      options: {
+        service: usersService,
+        validator: UsersValidator,
       },
     },
   ]);
