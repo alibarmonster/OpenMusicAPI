@@ -17,6 +17,8 @@
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "camelcase": "off",
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "no-unused-vars": "off",
+    "arrow-body-style": "off"
   }
 }
