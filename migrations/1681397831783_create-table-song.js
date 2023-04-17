@@ -6,24 +6,36 @@ exports.up = (pgm) => {
       type: 'VARCHAR(50)',
       primaryKey: true,
     },
-    year: {
-      type: 'INTEGER',
+    title: {
+      type: 'VARCHAR(50)',
       notNull: true,
     },
-    genre: {
-      type: 'VARCHAR(50)',
+    year: {
+      type: 'INTEGER',
       notNull: true,
     },
     performer: {
       type: 'VARCHAR(50)',
       notNull: true,
     },
+    genre: {
+      type: 'VARCHAR(50)',
+      notNull: true,
+    },
     duration: {
       type: 'INTEGER',
-      notNull: true,
+      notNull: false,
     },
     albumId: {
       type: 'VARCHAR(50)',
+      notNull: false,
+    },
+    created_at: {
+      type: 'TEXT',
+      notNull: true,
+    },
+    updated_at: {
+      type: 'TEXT',
       notNull: true,
     },
   });

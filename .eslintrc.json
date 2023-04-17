@@ -16,5 +16,7 @@
     "import/no-extraneous-dependencies": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
+    "camelcase": "off",
+    "object-curly-newline": "off"
   }
 }

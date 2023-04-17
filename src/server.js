@@ -9,12 +9,18 @@ const albums = require('./api/albums/index-album');
 const AlbumsService = require('./services/album-Service');
 const AlbumsValidator = require('./validator/albums/index-album');
 
+// songs
+const songs = require('./api/songs/index-song');
+const SongsService = require('./services/song-Service');
+const SongsValidator = require('./validator/songs/index-song');
+
 const ClientError = require('./exceptions/ClientError');
 
 const init = async () => {
   const albumsService = new AlbumsService();
+  const songsService = new SongsService();
   const server = Hapi.server({
-    port: process.env.PORT !== undefined ? process.env.PORT : 3000,
+    port: process.env.PORT !== undefined ? process.env.PORT : 5000,
     host: process.env.HOST !== 'production' ? 'localhost' : '0.0.0.0',
     routes: {
       cors: {
@@ -24,6 +30,13 @@ const init = async () => {
   });
 
   await server.register([
+    {
+      plugin: songs,
+      options: {
+        service: songsService,
+        validator: SongsValidator,
+      },
+    },
     {
       plugin: albums,
       options: {
